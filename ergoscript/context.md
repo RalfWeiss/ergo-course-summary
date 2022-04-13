@@ -1,7 +1,7 @@
 # Context
 
+Based on [ErgoScript Language Description](https://github.com/ScorexFoundation/sigmastate-interpreter/blob/develop/docs/LangSpec.md), you can derive this conceptual class diagram:
 
-How can I relate these 4 predefined registers to the attributes shown in this diagram?
 
 ```mermaid
 classDiagram
