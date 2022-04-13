@@ -70,8 +70,8 @@ flowchart TD
     C3(( )):::invisible
 
     %% Defining the UTxO's // align=Left funktioniert nicht
-    U1( <table><tr><th>Auction</th></tr><tr><td>NFT<br /></td></tr><tr><td>Nothing</td></tr></table> )
-    U2( <table><tr><th>Bob</th></tr><tr><td>100 ada<br /></td></tr></table> )
+    U1( <table><tr><th>Auction #1</th></tr><tr><td>NFT<br /></td></tr><tr><td>Nothing</td></tr></table> )
+    U2( <table><tr><th>Bob #2</th></tr><tr><td>100 ada<br /></td></tr></table> )
 
     %% Defining the Tx1 and its connections
     T1[[Tx-1]]
@@ -82,7 +82,7 @@ flowchart TD
     U2 ---> T1
 
     %% Defining the Outputs 
-    U3( <table><tr><th>Auction</th></tr><tr><td>NFT + 100 ada<br /></td></tr><tr><td> - Bob, 100 - </td></tr></table> )
+    U3( <table><tr><th>Auction #3</th></tr><tr><td>NFT + 100 ada<br /></td></tr><tr><td> - Bob, 100 - </td></tr></table> )
 
     %% Connect Tx with Outputs 
     T1 ---> U3
@@ -108,10 +108,38 @@ flowchart TD
   direction LR
 
     %% Defining invisible Connector
-    C1(( )):::invisible
-    C2(( )):::invisible
-    C3(( )):::invisible
     C4(( )):::invisible
+
+
+
+    %% Defining the Outputs 
+    U3( <table><tr><th>Auction #3</th></tr><tr><td>NFT + 100 ada<br /></td></tr><tr><td> - Bob, 100 - </td></tr></table> )
+
+    %% Defining the Charlies UTxO
+    U4( <table><tr><th>Charlie #4</th></tr><tr><td>200 ada<br /></td></tr></table> )    
+
+    %% Defining the Tx-2 and it's Input connections
+    T2[[Tx-2]]
+    U3 -- <p><b>Redeemer: bid</b><br/><br/></p> --- C4
+    C4 --> T2    
+    U4 ---> T2
+
+    %% Defining the Outputs 
+    U5( <table><tr><th>Auction #5</th></tr><tr><td>NFT + 200 ada<br /></td></tr><tr><td> - Charlie, 200 - </td></tr></table> )
+    U6( <table><tr><th>Bob #6</th></tr><tr><td>100 ada<br /></td></tr></table> )
+
+    %% Connect Tx-2 with Outputs 
+    T2 --> U5 & U6
+
+
+    %% Defining Styles
+    classDef invisible fill:none,stroke:none;
+     linkStyle 0,1,2,3,4 stroke:#333,stroke-width:2px,color:blue,stroke-dasharray: 10 12;
+  end
+```
+
+
+delete:
 
     %% Defining the UTxO's // align=Left funktioniert nicht
     U1( <table><tr><th>Auction</th></tr><tr><td>NFT<br /></td></tr><tr><td>Nothing</td></tr></table> )
@@ -125,31 +153,7 @@ flowchart TD
     C2 --> T1
     U2 ---> T1
 
-    %% Defining the Outputs 
-    U3( <table><tr><th>Auction</th></tr><tr><td>NFT + 100 ada<br /></td></tr><tr><td> - Bob, 100 - </td></tr></table> )
+
 
     %% Connect Tx-1 with Outputs 
-    T1 ---> U3
-
-    %% Defining the Charlies UTxO
-    U4( <table><tr><th>Charlie</th></tr><tr><td>200 ada<br /></td></tr></table> )    
-
-    %% Defining the Tx-2 and it's Input connections
-    T2[[Tx-2]]
-    U3 -- <p><b>Redeemer: bid</b><br/><br/></p> --- C4
-    C4 --> T2    
-    U4 ----> T2
-
-    %% Defining the Outputs 
-    U5( <table><tr><th>Auction</th></tr><tr><td>NFT + 200 ada<br /></td></tr><tr><td> - Charlie, 200 - </td></tr></table> )
-    U6( <table><tr><th>Bob</th></tr><tr><td>100 ada<br /></td></tr></table> )
-
-    %% Connect Tx-2 with Outputs 
-    T2 --> U5 & U6
-
-
-    %% Defining Styles
-    classDef invisible fill:none,stroke:none;
-    linkStyle 0,1,2,3,4,5,6,7,8,9 stroke:#333,stroke-width:2px,color:blue,stroke-dasharray: 10 12;
-  end
-```
+    T1 ---> U3    
