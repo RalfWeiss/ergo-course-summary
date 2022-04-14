@@ -7,36 +7,36 @@ flowchart TD
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
   box1("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
-    <tr><th><b>box in wallet: Alice #1</b></th></tr> 
-    <tr><td>R0 <b>value</b>: 200.000.000.000 nanoERGs</td></tr>     
-    <tr><td>R1 <b>guard</b>: pk(Alice)</td></tr> 
-    <tr><td>R2 <b>tokens</b>: none</td></tr> 
+    <tr><th></th><th><b>box in wallet: Alice #1</b></th></tr> 
+    <tr><td>R0</td><td> <b>value</b>: 200.000.000.000 nanoERGs</td></tr>     
+    <tr><td>R1</td><td> <b>guard</b>: pk(Alice)</td></tr> 
+    <tr><td>R2</td><td> <b>tokens</b>: none</td></tr> 
     </table>")
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
   box2("<table style='text-align:left; margin-top: -11ex; margin-bottom: 0;' > 
-    <tr><th><b>timedFundBox #2</b></th></tr> 
-    <tr><td >R0 <b>value</b>: 100.000.000.000 nanoERGs</td></tr> 
-    <tr><td >R1 <b>guard</b>: <br/><pre>(alicePK && 
+    <tr><th></th><th><b>timedFundBox #2</b></th></tr> 
+    <tr><td>R0</td><td> <b>value</b>: 100.000.000.000 nanoERGs</td></tr> 
+    <tr><td>R1</td><td> <b>guard</b>: <br/><pre>(alicePK && 
 HEIGHT > deadline) ||
 (bobPK && 
 HEIGHT <= deadline)</pre></td></tr> 
-    <tr><td>R2 <b>tokens</b>: none</td></tr> 
+    <tr><td>R2</td><td> <b>tokens</b>: none</td></tr> 
     </table>  ")
 
   box3("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
-    <tr><th><b>box in wallet: Alice #3</b></th></tr> 
-    <tr><td>R0 <b>value</b>: 99.999.000.000 nanoERGs</td></tr>     
-    <tr><td>R1 <b>guard</b>: pk(Alice)</td></tr> 
-    <tr><td>R2 <b>tokens</b>: none</td></tr> 
+    <tr><th></th><th><b>box in wallet: Alice #3</b></th></tr> 
+    <tr><td>R0</td><td> <b>value</b>: 99.999.000.000 nanoERGs</td></tr>     
+    <tr><td>R1</td><td> <b>guard</b>: pk(Alice)</td></tr> 
+    <tr><td>R2</td><td> <b>tokens</b>: none</td></tr> 
     </table>")
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
   box4("<table style='text-align:left; margin-top: -11ex; margin-bottom: 0;' > 
-    <tr><th><b>bobWithdrawBox #4</b></th></tr> 
-    <tr><td>R0 <b>value</b>: 99.999.000.000 nanoERGs</td></tr> 
-    <tr><td>R1 <b>guard</b>: pk(Bob)</td></tr> 
-    <tr><td>R2 <b>tokens</b>: none</td></tr>     
+    <tr><th></th><th><b>bobWithdrawBox #4</b></th></tr> 
+    <tr><td>R0</td><td> <b>value</b>: 99.999.000.000 nanoERGs</td></tr> 
+    <tr><td>R1</td><td> <b>guard</b>: pk(Bob)</td></tr> 
+    <tr><td>R2</td><td> <b>tokens</b>: none</td></tr>     
     </table>  ")
 
 

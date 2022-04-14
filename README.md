@@ -14,3 +14,4 @@ Summarized information of the ErgoLearn Layman Course
 
 - [Simple Send Contract](./ergoscript/example-contracts/simpleSend.md)
 - [Pin Lock Contract](./ergoscript/example-contracts/pinLockContract.md)
+- [Time Tuned Contract](./ergoscript/example-contracts/timedFund.md)
