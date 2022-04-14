@@ -62,7 +62,8 @@ The `change` box is created to make the input and output sums of the transaction
 flowchart LR
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
-  balance("<table style='text-align:left; margin-top: -12ex; margin-bottom: 0;' > 
+  %% balance("<table style='text-align:left; margin-top: -12ex; margin-bottom: 0;' > 
+  balance("<table style='text-align:left; margin-top: -6ex; margin-bottom: 0;' > 
     <tr><th '><b>balance</b></th></tr> 
     <tr><td >Guard: pk(buyer)</td></tr> 
     <tr><td style='color:red'>E: ERG</td></tr> 
