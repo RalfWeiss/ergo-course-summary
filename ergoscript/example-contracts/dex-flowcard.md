@@ -15,8 +15,8 @@ flowchart LR
     direction TB
 
     %% the margin-top reduction is only necessary for VSCode not for Github
-    balance("<table style='text-align:left; margin-top: -2ex; margin-bottom: 0;' > 
     %% balance("<table style='text-align:left; margin-bottom: 0;' > 
+    balance("<table style='text-align:left; margin-top: -2ex; margin-bottom: 0;' >     
       <tr><th '><b>balance</b></th></tr> 
       <tr><td style='color:red'>E: ERG</td></tr> 
       </table>  ")
