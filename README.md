@@ -12,4 +12,5 @@ Summarized information of the ErgoLearn Layman Course
 
 ## Models for the Example Scripts
 
+- [Simple Send Contract](./ergoscript/example-contracts/simpleSend.md)
 - [Pin Lock Contract](./ergoscript/example-contracts/pinLockContract.md)

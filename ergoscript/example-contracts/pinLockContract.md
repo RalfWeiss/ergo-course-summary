@@ -39,7 +39,7 @@ flowchart TD
     </table>")
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
-  pinLockBox("<table style='text-align:left; margin-top: -10ex; margin-bottom: 0;' > 
+  pinLockBox("<table style='text-align:left; margin-top: -11ex; margin-bottom: 0;' > 
     <tr><th><b>pinLockBox #2</b></th></tr> 
     <tr><td >R0 <b>value</b>: 50.000.000 nanoERGs</td></tr> 
     <tr><td >R1 <b>guard</b>: <br/><pre>INPUTS(0).R4 == <br/>hashed(OUTPUTS(0).R4)</pre></td></tr> 
@@ -55,7 +55,7 @@ flowchart TD
     </table>")
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
-  withdrawBox("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
+  withdrawBox("<table style='text-align:left; margin-top: -11ex; margin-bottom: 0;' > 
     <tr><th><b>withdrawBox #4</b></th></tr> 
     <tr><td>R0 <b>value</b>: 49.000.000 nanoERGs</td></tr> 
     <tr><td>R1 <b>guard</b>: pk(buyer)</td></tr> 
