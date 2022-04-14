@@ -31,7 +31,7 @@ val depositTransaction = Transaction(
 flowchart LR
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
-  wallet("<table style='text-align:left; margin-top: 0; margin-bottom: 0;' > 
+  wallet("<table style='text-align:left; margin-top: -9; margin-bottom: 0;' > 
     <tr><th '><b>box in wallet</b></th></tr> 
     <tr><td >R0 <b>value</b>: 100.000.000</td></tr>     
     <tr><td >R1 <b>guard</b>: pk(user)</td></tr> 
@@ -41,9 +41,8 @@ flowchart LR
   pinLockBox("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
     <tr><th '><b>pinLockBox</b></th></tr> 
     <tr><td >R0 <b>value</b>: 50.000.000</td></tr> 
-    <tr><td >R1 <b>guard</b>: INPUTS(0).R4 == <br/>hashed(OUTPUTS(0).R4)</td></tr> 
+    <tr><td >R1 <b>guard</b>: <br/>INPUTS(0).R4 == <br/>hashed(OUTPUTS(0).R4)</td></tr> 
     <tr><td >R4 <b>pin</b>: hashed(1293)</td></tr>     
-
     </table>  ")
 
   %% adjust margin-top: lines = 5; margin-top -12ex --> (lines-1) * 3 ex
