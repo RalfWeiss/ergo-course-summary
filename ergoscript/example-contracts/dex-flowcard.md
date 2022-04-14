@@ -90,7 +90,6 @@ flowchart LR
   balance ---> TBo
   TBo ---> bid
   TBo ---> change
-
 ```
 
 ## Cancel Buy, Cancel Sell Transactions

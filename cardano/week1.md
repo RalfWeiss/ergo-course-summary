@@ -323,7 +323,7 @@ flowchart LR
   %% Defining the UTxO's // align=Left funktioniert nicht
   %% Script( <p style='text-align:left'><b>Script</b><hr />Value<br />Datum</p> )
   %% Script( <p align='left'><b>Script</b><hr />Value<br />Datum</p> )
-  Script( <table><thead><tr><th>script<br /> address</th><th>auction</th></tr></thead><tbody><tr><td>value</td><td>NFT</td></tr><tr><td>datum</td><td>Nothing</td></tr></tbody></table> )
+  Script( <table><thead><tr><th>script<br /> address</th><th>auction</th></tr></thead><tbody><tr><td>value</td><td>NFT</td></tr><tr><td>datum</td><td>Nothing<br /></td></tr></tbody></table> )
 
 
   %% Defining the Tx
@@ -342,23 +342,26 @@ flowchart LR
 ## Format for UTxO in diagram
 
 ```mermaid
-flowchart LR
+flowchart TD 
+  subgraph TOP[<b>English Auction</b>]
+  direction LR
 
-  %% Defining invisible Connector
-  C1(( )):::invisible
-  C2(( )):::invisible
-  C3(( )):::invisible
+    %% Defining invisible Connector
+    C1(( )):::invisible
+    C2(( )):::invisible
+    C3(( )):::invisible
 
-  %% Defining the UTxO's // align=Left funktioniert nicht
-  Script( <table><tr><th>auction</th></tr><tr><td>NFT</td></tr><tr><td>Nothing</td></tr></table> )
+    %% Defining the UTxO's // align=Left funktioniert nicht
+    Script( <table><tr><th>auction</th></tr><tr><td>NFT<br /></td></tr><tr><td>Nothing</td></tr></table> )
 
 
-  %% Defining the Tx
-  C1 --- Script
-  Script -- <p><b>Redeemer</b><br/><br/></p> --- C2
-  C2 --- C3
+    %% Defining the Tx
+    C1 --- Script
+    Script -- <p><b>Redeemer</b><br/><br/></p> --- C2
+    C2 --- C3
 
-  %% Defining Styles
-  classDef invisible fill:none,stroke:none;
-  linkStyle 0,1,2 stroke:#333,stroke-width:2px,color:blue,stroke-dasharray: 8 12;
+    %% Defining Styles
+    classDef invisible fill:none,stroke:none;
+    linkStyle 0,1,2 stroke:#333,stroke-width:2px,color:blue,stroke-dasharray: 8 12;
+  end
 ```
