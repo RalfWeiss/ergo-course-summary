@@ -9,10 +9,10 @@ A box is made of registers (and nothing but registers!), we allow every box in t
 ```mermaid
 classDiagram
 class Box{
-    R_0 Monetary Value
-    R_1 Guard Script
-    R_2 Tokens
-    R_3 Creation Height
+    R_0: Monetary Value
+    R_1: Guard Script
+    R_2: Tokens
+    R_3: Creation Height
     ...
 }
 ```
@@ -20,12 +20,14 @@ class Box{
 
 From these registers, four are filled with mandatory values: 
 
-| Register | Meaning |
-| -- | -- |
-| **R_0** | monetary value |
-| **R_1** | serialized guard script / protecting script |
-| **R_2** | tokens |
-| **R_3** | 
+| Register | Meaning | Source ex. Class.Attribute |
+| --       | --      | --                         |
+| **R_0**  | monetary value | Box.value |
+| **R_1**  | serialized guard script / <br /> protecting script | Box.propositionBytes  |
+| **R_2**  | tokens | Box.tokens |
+| **R_3**  | declared **creation height** | R3 is creation info, with following form: <br/>(heightOfCreation, TxId++outputIndex in creation tx) |
+
+```
 - declared **creation height**, 
 - **unique identifier of transaction** which created the coin and 
 - also an **index of the box in the transaction**. <br />
@@ -33,7 +35,9 @@ ___Or___
 - identifier of a transaction which created the box and 
 - output index in the transaction and 
 - also creation height.
-|
+___Or___ @Cheezy
+To be clear, the height there is not header.height or preHeader.height, it is its own height unique to each box |
+```
 
 
 <details>
@@ -98,93 +102,7 @@ https://ergoplatform.org/en/blog/2021-06-09-building-ergo-ergoscript/
 
 https://www.ergoforum.org/t/ergoscript-design-patterns/222
 
-```mermaid
-classDiagram
-direction LR
 
-
-class Demo { 
-  version: Byte 
-  parentId: Coll[Byte] 
-  timestamp: Long 
-  nBits: Long 
-  height: Int 
-  minerPk: GroupElement   
-}
-
-class GroupElement {
-  exp(k: BigInt) GroupElement
-  multiply(that: GroupElement) GroupElement
-  negate() GroupElement
-  getEncoded ( ) Coll~Byte~  
-}
-
-class AvlTree { 
-  version: Byte 
-}
-
-class Context{
-  HEIGHT: Int 
-  SELF: Box 
-  INPUTS: Coll[Box] 
-  dataInputs: Coll[Box] 
-  OUTPUTS: Coll[Box]
-  LastBlockUtxoRootHash: AvlTree 
-  headers Coll[Header] 
-  preHeader PreHeader 
-}
-
-class Box{
-  value: Long 
-  id: Coll[Byte] 
-  propositionBytes: Coll[Byte]
-  bytes: Coll[Byte]
-  bytesWithoutRef: Coll[Byte]
-  creationInfo: ~Int, Coll[Byte]~ 
-  tokens: Coll[~Coll[Byte], Long~] 
-  Ri[T]: Option[T]
-}
-
-class Header {  
-  id: Coll[Byte]
-  version: Byte 
-  parentId: Coll[Byte] 
-  ADProofsRoot: Coll[Byte] 
-  stateRoot: Coll[Byte] 
-  transactionsRoot: Coll[Byte] 
-  timestamp: Long 
-  nBits: Long
-  height: Int 
-  extensionRoot: Coll[Byte] 
-  minerPk: GroupElement 
-  powOnetimePk: GroupElement 
-  powNonce: Coll[Byte] 
-  powDistance: BigInt 
-  votes: Coll[Byte] 
-}
-
-class PreHeader { 
-  version: Byte 
-  parentId: Coll[Byte] 
-  timestamp: Long 
-  nBits: Long 
-  height: Int 
-  minerPk: GroupElement 
-  votes: Coll[Byte] 
-}
-
-Context *.. Header
-Context *.. PreHeader
-Context .. Box
-
-AvlTree .. Context
-
-Header .. GroupElement
-PreHeader .. GroupElement
-
-Unrelated .. Context
-
-```
 
 ## Types
 
@@ -328,7 +246,7 @@ class Box{
 }
 ```
 
-- Box with unusual Syntax
+## Helper classes- Box with unusual Syntax
 
 ```mermaid
 classDiagram
@@ -385,7 +303,19 @@ class Coll~A~ {
   slice(from: Int, until: Int) Coll~A~  
   append(other: Coll~A~) Coll~A~  
   indexOf(elem: A, from: Int) Int
+}
 
+
+class GroupElement {
+  exp(k: BigInt) GroupElement
+  multiply(that: GroupElement) GroupElement
+  negate() GroupElement
+  getEncoded ( ) Coll~Byte~  
+}
+
+
+class AvlTree { 
+  version: Byte 
 }
 
 

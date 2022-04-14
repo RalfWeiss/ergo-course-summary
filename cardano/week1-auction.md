@@ -1,6 +1,9 @@
 # English-Auction
 
-based on: [PPP 030104 - Auction Contract in the EUTxO-Model](https://www.youtube.com/watch?v=Bj6bqRGT1L0)
+based on: [Week 01 - English Auction](https://plutus-pioneer-program.readthedocs.io/en/latest/pioneer/week1.html)
+
+Reference video: [PPP 030104 - Auction Contract in the EUTxO-Model](https://www.youtube.com/watch?v=Bj6bqRGT1L0)
+
 
 So let’s say that Alice has an NFT and wants to auction it.
 She creates an UTxO at the script output. We will look at the code later, but first we will just examine the ideas of the UTxO model.
@@ -22,9 +25,7 @@ flowchart LR
     C3(( )):::invisible
 
     %% Defining the UTxO's // align=Left funktioniert nicht
-    %% Script( <p style='text-align:left'><b>Script</b><hr />Value<br />Datum</p> )
-    %% Script( <p align='left'><b>Script</b><hr />Value<br />Datum</p> )
-    Script( <table><thead><tr><th>script<br /> address</th><th>auction</th></tr></thead><tbody><tr><td>value</td><td>NFT</td></tr><tr><td>datum</td><td>Nothing<br /></td></tr></tbody></table> )
+    Script("<table><thead><tr><th>script<br/> address</th><th align='left'>auction</th></tr></thead><tbody><tr><td align='left'>value</td><td align='left'>NFT</td></tr><tr><td align='left'>datum</td><td align='left'>Nothing&nbsp<br /></td></tr></tbody></table>")
 
 
     %% Defining the Tx
@@ -44,7 +45,6 @@ flowchart LR
 In the real blockchain you can’t have a UTxO that just contains native tokens, they always have to be accompanied by some Ada, but for simplicity we will ignore that here.
 
 ## Bob Makes a Bid
-
 
 Not let’s say that Bob wants to bid 100 Ada.
 
@@ -70,8 +70,8 @@ flowchart TD
     C3(( )):::invisible
 
     %% Defining the UTxO's // align=Left funktioniert nicht
-    U1( <table><tr><th>Auction #1</th></tr><tr><td>NFT<br /></td></tr><tr><td>Nothing</td></tr></table> )
-    U2( <table><tr><th>Bob #2</th></tr><tr><td>100 ada<br /></td></tr></table> )
+    U1("<table><tr><th>Auction #1</th></tr><tr><td align='left'>NFT<br /></td></tr><tr><td align='left'>Nothing</td></tr></table>")
+    U2("<table><tr><th>Bob #2</th></tr><tr><td align='left'>100 ada<br /></td></tr></table>")
 
     %% Defining the Tx1 and its connections
     T1[[Tx-1]]
@@ -82,10 +82,12 @@ flowchart TD
     U2 ---> T1
 
     %% Defining the Outputs 
-    U3( <table><tr><th>Auction #3</th></tr><tr><td>NFT + 100 ada<br /></td></tr><tr><td> - Bob, 100 - </td></tr></table> )
+    U3("<table><tr><th>Auction #3</th></tr><tr><td align='left'>NFT + 100 ada<br /></td></tr><tr><td align='left'>(Bob, 100)</td></tr></table>")
 
     %% Connect Tx with Outputs 
     T1 ---> U3
+
+    
 
     %% Defining Styles
     classDef invisible fill:none,stroke:none;
@@ -98,7 +100,6 @@ It also has to check that the correct inputs and outputs are present. In this ca
 ## Charlie Makes a Bid
 
 Next, let’s assume that Charlie wants to outbid Bob and bid 200 Ada.
-
 
 Charlie will create another transaction, this time one with two inputs and two outputs. As in the first case, the two inputs are the bid (this time Charlie’s bid of 200 Ada), and the auction UTxO. One of the outputs is the updated auction UTxO. There will also be a second output, which will be a UTxO which returns Bob’s bid of 100 Ada.
 
@@ -113,10 +114,10 @@ flowchart TD
 
 
     %% Defining the Outputs 
-    U3( <table><tr><th>Auction #3</th></tr><tr><td>NFT + 100 ada<br /></td></tr><tr><td> - Bob, 100 - </td></tr></table> )
+    U3("<table><tr><th>Auction #3</th></tr><tr><td align='left'>NFT + 100 ada<br /></td></tr><tr><td align='left'>(Bob, 100)</td></tr></table>")
 
     %% Defining the Charlies UTxO
-    U4( <table><tr><th>Charlie #4</th></tr><tr><td>200 ada<br /></td></tr></table> )    
+    U4("<table><tr><th>Charlie #4</th></tr><tr><td align='left'>200 ada<br /></td></tr></table>")    
 
     %% Defining the Tx-2 and it's Input connections
     T2[[Tx-2]]
@@ -125,8 +126,8 @@ flowchart TD
     U4 ---> T2
 
     %% Defining the Outputs 
-    U5( <table><tr><th>Auction #5</th></tr><tr><td>NFT + 200 ada<br /></td></tr><tr><td> - Charlie, 200 - </td></tr></table> )
-    U6( <table><tr><th>Bob #6</th></tr><tr><td>100 ada<br /></td></tr></table> )
+    U5("<table><tr><th>Auction #5</th></tr><tr><td align='left'>NFT + 200 ada<br /></td></tr><tr><td align='left'>(Charlie, 200)</td></tr></table>")
+    U6("<table><tr><th>Bob #6</th></tr><tr><td>100 ada<br /></td></tr></table>")
 
     %% Connect Tx-2 with Outputs 
     T2 --> U5 & U6
@@ -137,23 +138,3 @@ flowchart TD
      linkStyle 0,1,2,3,4 stroke:#333,stroke-width:2px,color:blue,stroke-dasharray: 10 12;
   end
 ```
-
-
-delete:
-
-    %% Defining the UTxO's // align=Left funktioniert nicht
-    U1( <table><tr><th>Auction</th></tr><tr><td>NFT<br /></td></tr><tr><td>Nothing</td></tr></table> )
-    U2( <table><tr><th>Bob</th></tr><tr><td>100 ada<br /></td></tr></table> )
-
-    %% Defining the Tx1 and its connections
-    T1[[Tx-1]]
-
-    C1 --> U1
-    U1 -- <p><b>Redeemer: bid</b><br/><br/></p> --- C2
-    C2 --> T1
-    U2 ---> T1
-
-
-
-    %% Connect Tx-1 with Outputs 
-    T1 ---> U3    
