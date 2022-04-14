@@ -14,13 +14,16 @@ flowchart LR
   subgraph pkBuyer["<b>pk(buyer)</b>"]
     direction TB
 
-    balance("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
+    %% the margin-top reduction is only necessary for VSCode not for Github
+    %% balance("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
+    balance("<table style='text-align:left; margin-bottom: 0;' > 
       <tr><th '><b>balance</b></th></tr> 
       <tr><td style='color:red'>E: ERG</td></tr> 
       </table>  ")
 
     %% adjust margin-top: lines = 4; margin-top -9ex --> (lines-1) * 3 ex
-    refund("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
+    %% refund("<table style='text-align:left; margin-top: -9ex; margin-bottom: 0;' > 
+    refund("<table style='text-align:left; margin-bottom: 0;' > 
       <tr><th '><b>refund</b></th></tr> 
       <tr><td style='color:red'>ergAmt: ERG</td></tr> 
       </table>  ")
@@ -95,7 +98,9 @@ At any time, the `buyer` can cancel the order by sending `CancelBuy` transaction
 
 As you can see on the diagram, both the `Cancel` and the `Swap` transactions can spend the `bid` box. 
 
-When a box has spending alternatives (or spending paths) then each alternative is identified by a unique name prefixed with `!` (`!cancel` and `!swap` for the `bid` box). Each alternative path has specific spending conditions. In our example, when the `Cancel Buy` transaction spends the `bid` box the `?buyer` condition should be satisfied, which we read as “**the signature for the buyer address should be presented in the transaction**”. Therefore, only buyer can cancel the buy order. This “signature” condition is only required for the `!cancel` alternative spending path and not required for `!swap`.
+When a box has spending alternatives (or spending paths) then each alternative is identified by a unique name prefixed with `!` (`!cancel` and `!swap` for the `bid` box). Each alternative path has specific spending conditions. 
+
+In our example, when the `Cancel Buy` transaction spends the `bid` box the `?buyer` condition should be satisfied, which we read as “**the signature for the buyer address should be presented in the transaction**”. Therefore, only buyer can cancel the buy order. This “signature” condition is only required for the `!cancel` alternative spending path and not required for `!swap`.
 
 ```mermaid
 flowchart LR
@@ -118,7 +123,7 @@ flowchart LR
   T[["Cancel Buy"]]
 
   bid -- "!cancel<br/>?buyer<br/><br/><br/>" ---> T
-  T --> refund
+  T ---> refund
 
 ```
 
